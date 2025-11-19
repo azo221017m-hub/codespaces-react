@@ -1,0 +1,52 @@
+.formulario-moderadores {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  padding: 1rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border: 1px solid #ececec;
+}
+
+.formulario-moderadores input,
+.formulario-moderadores select,
+.formulario-moderadores textarea {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ececec;
+  font-size: 0.97rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fafbfc;
+}
+
+.formulario-moderadores h2 {
+  margin-bottom: 0.7rem;
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.acciones-formulario {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.acciones-formulario button {
+  background: #f5f5f5;
+  color: #222;
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  padding: 0.35rem 1rem;
+  cursor: pointer;
+  font-size: 0.97rem;
+  transition: background 0.2s;
+}
+
+.acciones-formulario button:hover {
+  background: #e0e0e0;
+}

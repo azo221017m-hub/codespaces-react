@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
+import * as detallesubrecetasController from '../controllers/detallesubrecetas.controller.js';
 const router = express.Router();
-const detallesubrecetasController = require('../controllers/detallesubrecetas.controller');
 
 router.get('/', detallesubrecetasController.getAllDetallesSubRecetas);
 router.get('/:id', detallesubrecetasController.getDetalleSubRecetaById);
@@ -8,4 +8,4 @@ router.post('/', detallesubrecetasController.createDetalleSubReceta);
 router.put('/:id', detallesubrecetasController.updateDetalleSubReceta);
 router.delete('/:id', detallesubrecetasController.deleteDetalleSubReceta);
 
-module.exports = router;
+export default router;

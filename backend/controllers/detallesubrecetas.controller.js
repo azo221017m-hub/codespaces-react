@@ -1,17 +1,17 @@
-const db = require('../db');
+import pool from '../config/database.js';
 
-exports.getAllDetallesSubRecetas = async (req, res) => {
+export const getAllDetallesSubRecetas = async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM detallesubrecetas');
+    const [rows] = await pool.query('SELECT * FROM detallesubrecetas');
     res.json(rows);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-exports.getDetalleSubRecetaById = async (req, res) => {
+export const getDetalleSubRecetaById = async (req, res) => {
   try {
-    const [rows] = await db.query('SELECT * FROM detallesubrecetas WHERE id = ?', [req.params.id]);
+    const [rows] = await pool.query('SELECT * FROM detallesubrecetas WHERE id = ?', [req.params.id]);
     if (rows.length === 0) return res.status(404).json({ error: 'No encontrado' });
     res.json(rows[0]);
   } catch (error) {
@@ -19,10 +19,10 @@ exports.getDetalleSubRecetaById = async (req, res) => {
   }
 };
 
-exports.createDetalleSubReceta = async (req, res) => {
+export const createDetalleSubReceta = async (req, res) => {
   try {
     const { subreceta_id, insumo_id, cantidad, unidad } = req.body;
-    const [result] = await db.query(
+    const [result] = await pool.query(
       'INSERT INTO detallesubrecetas (subreceta_id, insumo_id, cantidad, unidad) VALUES (?, ?, ?, ?)',
       [subreceta_id, insumo_id, cantidad, unidad]
     );
@@ -32,10 +32,10 @@ exports.createDetalleSubReceta = async (req, res) => {
   }
 };
 
-exports.updateDetalleSubReceta = async (req, res) => {
+export const updateDetalleSubReceta = async (req, res) => {
   try {
     const { subreceta_id, insumo_id, cantidad, unidad } = req.body;
-    const [result] = await db.query(
+    const [result] = await pool.query(
       'UPDATE detallesubrecetas SET subreceta_id = ?, insumo_id = ?, cantidad = ?, unidad = ? WHERE id = ?',
       [subreceta_id, insumo_id, cantidad, unidad, req.params.id]
     );
@@ -46,9 +46,9 @@ exports.updateDetalleSubReceta = async (req, res) => {
   }
 };
 
-exports.deleteDetalleSubReceta = async (req, res) => {
+export const deleteDetalleSubReceta = async (req, res) => {
   try {
-    const [result] = await db.query('DELETE FROM detallesubrecetas WHERE id = ?', [req.params.id]);
+    const [result] = await pool.query('DELETE FROM detallesubrecetas WHERE id = ?', [req.params.id]);
     if (result.affectedRows === 0) return res.status(404).json({ error: 'No encontrado' });
     res.json({ message: 'Eliminado correctamente' });
   } catch (error) {

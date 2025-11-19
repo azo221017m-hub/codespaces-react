@@ -1,3 +1,37 @@
+// ==================== MODERADORES ====================
+export const getModeradores = async () => {
+  const response = await fetch(`${API_BASE_URL}/moderadores`);
+  return handleResponse(response);
+};
+
+export const createModerador = async (moderador) => {
+  const response = await fetch(`${API_BASE_URL}/moderadores`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(moderador),
+  });
+  return handleResponse(response);
+};
+
+export const updateModerador = async (id, moderador) => {
+  const response = await fetch(`${API_BASE_URL}/moderadores/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(moderador),
+  });
+  return handleResponse(response);
+};
+
+export const deleteModerador = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/moderadores/${id}`, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
 // Configuración de la API
 // Usar rutas relativas para aprovechar el proxy de Vite
 const API_BASE_URL = '/api';

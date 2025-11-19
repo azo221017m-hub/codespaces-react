@@ -15,6 +15,7 @@ import cuentacontableRoutes from './routes/cuentacontable.routes.js'; // Nueva r
 import descuentosRoutes from './routes/descuentos.routes.js'; // Nueva ruta para descuentos
 import insumosRoutes from './routes/insumos.routes.js'; // Nueva ruta para insumos
 import mesasRoutes from './routes/mesas.routes.js'; // Nueva ruta para mesas
+import moderadoresRoutes from './routes/moderadores.routes.js'; // Nueva ruta para moderadores
 import detallesubrecetasRoutes from './routes/detallesubrecetas.routes.js'; // Nueva ruta para detalles subrecetas
 
 // Configuración
@@ -75,6 +76,7 @@ app.use('/api/cuentas-contables', cuentacontableRoutes); // Registrar la ruta de
 app.use('/api/descuentos', descuentosRoutes); // Registrar la ruta de descuentos
 app.use('/api/insumos', insumosRoutes); // Registrar la ruta de insumos
 app.use('/api/mesas', mesasRoutes); // Registrar la ruta de mesas
+app.use('/api/moderadores', moderadoresRoutes); // Registrar la ruta de moderadores
 app.use('/api/detallesubrecetas', detallesubrecetasRoutes); // Registrar la ruta de detalles subrecetas
 
 // Manejo de errores 404

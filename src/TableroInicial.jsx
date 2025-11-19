@@ -11,6 +11,7 @@ import ConfigDescuentos from './ConfigDescuentos';
 import ConfigInsumos from './ConfigInsumos';
 import ConfigMesas from './ConfigMesas';
 import ConfigSubReceta from './ConfigSubReceta';
+import ConfigModeradores from './ConfigModeradores';
 
 function TableroInicial({ usuario, onLogout }) {
   const [menuAbierto, setMenuAbierto] = useState({
@@ -91,7 +92,8 @@ function TableroInicial({ usuario, onLogout }) {
                       className={seccionActiva === 'negocios' ? 'activo' : ''}
                       onClick={() => cambiarSeccion('negocios')}
                     >
-                      🏢 Negocios
+                      <span role="img" aria-label="Negocios">🏢</span>
+                      <span>Negocios</span>
                     </button>
                   </li>
                   <li>
@@ -99,7 +101,8 @@ function TableroInicial({ usuario, onLogout }) {
                       className={seccionActiva === 'usuarios' ? 'activo' : ''}
                       onClick={() => cambiarSeccion('usuarios')}
                     >
-                      👥 Usuarios
+                      <span role="img" aria-label="Usuarios">👥</span>
+                      <span>Usuarios</span>
                     </button>
                   </li>
                   <li>
@@ -107,7 +110,8 @@ function TableroInicial({ usuario, onLogout }) {
                       className={seccionActiva === 'roles' ? 'activo' : ''}
                       onClick={() => cambiarSeccion('roles')}
                     >
-                      🔐 Roles de Usuario
+                      <span role="img" aria-label="Roles">🔐</span>
+                      <span>Roles de Usuario</span>
                     </button>
                   </li>
                   <li>
@@ -115,7 +119,8 @@ function TableroInicial({ usuario, onLogout }) {
                       className={seccionActiva === 'unidades' ? 'activo' : ''}
                       onClick={() => cambiarSeccion('unidades')}
                     >
-                      📏 Unidad de Medida
+                      <span role="img" aria-label="Unidad de Medida">📏</span>
+                      <span>Unidad de Medida</span>
                     </button>
                   </li>
                   <li>
@@ -123,7 +128,8 @@ function TableroInicial({ usuario, onLogout }) {
                       className={seccionActiva === 'categorias' ? 'activo' : ''}
                       onClick={() => cambiarSeccion('categorias')}
                     >
-                      🗂️ Categorías
+                      <span role="img" aria-label="Categorías">🗂️</span>
+                      <span>Categorías</span>
                     </button>
                   </li>
                     <li>
@@ -131,7 +137,8 @@ function TableroInicial({ usuario, onLogout }) {
                         className={seccionActiva === 'clientes' ? 'activo' : ''}
                         onClick={() => cambiarSeccion('clientes')}
                       >
-                        👤 Clientes
+                        <span role="img" aria-label="Clientes">👤</span>
+                        <span>Clientes</span>
                       </button>
                     </li>
                     <li>
@@ -139,7 +146,8 @@ function TableroInicial({ usuario, onLogout }) {
                         className={seccionActiva === 'cuentascontables' ? 'activo' : ''}
                         onClick={() => cambiarSeccion('cuentascontables')}
                       >
-                        💼 Cuentas Contables
+                        <span role="img" aria-label="Cuentas Contables">💼</span>
+                        <span>Cuentas Contables</span>
                       </button>
                     </li>
                     <li>
@@ -147,7 +155,8 @@ function TableroInicial({ usuario, onLogout }) {
                         className={seccionActiva === 'descuentos' ? 'activo' : ''}
                         onClick={() => cambiarSeccion('descuentos')}
                       >
-                        🎟️ Descuentos
+                        <span role="img" aria-label="Descuentos">🎟️</span>
+                        <span>Descuentos</span>
                       </button>
                     </li>
                     <li>
@@ -155,7 +164,8 @@ function TableroInicial({ usuario, onLogout }) {
                         className={seccionActiva === 'insumos' ? 'activo' : ''}
                         onClick={() => cambiarSeccion('insumos')}
                       >
-                        🧃 Insumos
+                        <span role="img" aria-label="Insumos">🧃</span>
+                        <span>Insumos</span>
                       </button>
                     </li>
                     <li>
@@ -163,7 +173,8 @@ function TableroInicial({ usuario, onLogout }) {
                         className={seccionActiva === 'mesas' ? 'activo' : ''}
                         onClick={() => cambiarSeccion('mesas')}
                       >
-                        🍽️ Mesas
+                        <span role="img" aria-label="Mesas">🍽️</span>
+                        <span>Mesas</span>
                       </button>
                     </li>
                     <li>
@@ -171,7 +182,17 @@ function TableroInicial({ usuario, onLogout }) {
                         className={seccionActiva === 'subreceta' ? 'activo' : ''}
                         onClick={() => cambiarSeccion('subreceta')}
                       >
-                        🥣 SubReceta
+                        <span role="img" aria-label="SubReceta">🥣</span>
+                        <span>SubReceta</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button 
+                        className={seccionActiva === 'moderadores' ? 'activo' : ''}
+                        onClick={() => cambiarSeccion('moderadores')}
+                      >
+                        <span role="img" aria-label="Moderadores">🧑‍💼</span>
+                        <span>Moderadores</span>
                       </button>
                     </li>
                   </ul>
@@ -240,6 +261,9 @@ function TableroInicial({ usuario, onLogout }) {
               )}
               {seccionActiva === 'subreceta' && (
                 <ConfigSubReceta usuario={usuario} />
+              )}
+              {seccionActiva === 'moderadores' && (
+                <ConfigModeradores usuario={usuario} />
               )}
                       </div>
           {seccionActiva === 'unidades' && <GestionUnidadesMedida usuario={usuario} />}
