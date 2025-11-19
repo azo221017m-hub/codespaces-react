@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './FormularioUsuario.css';
+import { obtenerNegocios, obtenerRoles } from './api';
 
 function FormularioUsuario({ usuario, modoEdicion, onGuardar, onCancelar }) {
   const [formData, setFormData] = useState({
@@ -20,20 +21,53 @@ function FormularioUsuario({ usuario, modoEdicion, onGuardar, onCancelar }) {
 
   const [tabActiva, setTabActiva] = useState('general');
   const [mostrarPassword, setMostrarPassword] = useState(false);
+  const [negocios, setNegocios] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [cargandoDatos, setCargandoDatos] = useState(true);
 
-  // Datos de ejemplo para los selectores
-  const negocios = [
-    { id: 1, nombre: 'Restaurante El Sabor' },
-    { id: 2, nombre: 'Cafetería La Taza' }
-  ];
+  // Cargar negocios y roles desde la API
+  useEffect(() => {
+    cargarDatos();
+  }, []);
 
-  const roles = [
-    { id: 1, nombre: 'Super Administrador' },
-    { id: 2, nombre: 'Gerente' },
-    { id: 3, nombre: 'Mesero' },
-    { id: 4, nombre: 'Chef' },
-    { id: 5, nombre: 'Cajero' }
-  ];
+  const cargarDatos = async () => {
+    try {
+      setCargandoDatos(true);
+      
+      // Cargar negocios
+      const responseNegocios = await obtenerNegocios();
+      if (responseNegocios.success) {
+        // Eliminar duplicados por idNegocio
+        const negociosUnicos = [];
+        const negociosMap = new Map();
+        
+        responseNegocios.data.forEach(item => {
+          if (!negociosMap.has(item.idNegocio)) {
+            negociosMap.set(item.idNegocio, {
+              id: item.idNegocio,
+              nombre: item.nombreNegocio
+            });
+          }
+        });
+        
+        setNegocios(Array.from(negociosMap.values()));
+      }
+      
+      // Cargar roles
+      const responseRoles = await obtenerRoles();
+      if (responseRoles.success) {
+        const rolesFormateados = responseRoles.data.map(rol => ({
+          id: rol.idRol,
+          nombre: rol.nombreRol
+        }));
+        setRoles(rolesFormateados);
+      }
+    } catch (error) {
+      console.error('Error al cargar datos:', error);
+    } finally {
+      setCargandoDatos(false);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

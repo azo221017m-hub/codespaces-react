@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './FormularioRol.css';
+import { obtenerNegocios } from './api';
 
 function FormularioRol({ rol, modoEdicion, onGuardar, onCancelar }) {
   const parsePrivilegios = (privilegioStr) => {
@@ -28,12 +29,40 @@ function FormularioRol({ rol, modoEdicion, onGuardar, onCancelar }) {
   });
 
   const [tabActiva, setTabActiva] = useState('general');
+  const [negocios, setNegocios] = useState([]);
+  const [cargandoDatos, setCargandoDatos] = useState(true);
 
-  // Datos de ejemplo para negocios
-  const negocios = [
-    { id: 1, nombre: 'Restaurante El Sabor' },
-    { id: 2, nombre: 'Cafetería La Taza' }
-  ];
+  // Cargar negocios desde la API
+  useEffect(() => {
+    cargarNegocios();
+  }, []);
+
+  const cargarNegocios = async () => {
+    try {
+      setCargandoDatos(true);
+      const response = await obtenerNegocios();
+      
+      if (response.success) {
+        // Eliminar duplicados por idNegocio
+        const negociosMap = new Map();
+        
+        response.data.forEach(item => {
+          if (!negociosMap.has(item.idNegocio)) {
+            negociosMap.set(item.idNegocio, {
+              id: item.idNegocio,
+              nombre: item.nombreNegocio
+            });
+          }
+        });
+        
+        setNegocios(Array.from(negociosMap.values()));
+      }
+    } catch (error) {
+      console.error('Error al cargar negocios:', error);
+    } finally {
+      setCargandoDatos(false);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
