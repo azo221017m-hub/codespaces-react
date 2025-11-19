@@ -1,9 +1,6 @@
 // Configuración de la API
-// En GitHub Codespaces, usa la URL pública del backend (puerto 5000)
-// En desarrollo local, usa localhost
-const API_BASE_URL = window.location.hostname.includes('app.github.dev')
-  ? `${window.location.protocol}//${window.location.hostname.replace('-3000', '-5000')}/api`
-  : 'http://localhost:5000/api';
+// Usar rutas relativas para aprovechar el proxy de Vite
+const API_BASE_URL = '/api';
 
 console.log('🔗 API Base URL:', API_BASE_URL);
 
@@ -202,7 +199,292 @@ export const eliminarUnidadMedida = async (id) => {
   const response = await fetch(`${API_BASE_URL}/unidades-medida/${id}`, {
     method: 'DELETE',
   });
-  
+
   return handleResponse(response);
 };
+
+// ==================== CATEGORÍAS ====================
+
+export const obtenerCategorias = async () => {
+  const response = await fetch(`${API_BASE_URL}/categorias`);
+  return handleResponse(response);
 };
+
+export const crearCategoria = async (categoria) => {
+  const response = await fetch(`${API_BASE_URL}/categorias`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(categoria),
+  });
+  return handleResponse(response);
+};
+
+export const actualizarCategoria = async (id, categoria) => {
+  const response = await fetch(`${API_BASE_URL}/categorias/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(categoria),
+  });
+  return handleResponse(response);
+};
+
+export const eliminarCategoria = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/categorias/${id}`, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
+
+// ==================== CLIENTES ====================
+export const getClientes = async () => {
+  const response = await fetch(`${API_BASE_URL}/clientes`);
+  return handleResponse(response);
+};
+
+export const createCliente = async (cliente) => {
+  const response = await fetch(`${API_BASE_URL}/clientes`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(cliente),
+  });
+  return handleResponse(response);
+};
+
+export const updateCliente = async (id, cliente) => {
+  const response = await fetch(`${API_BASE_URL}/clientes/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(cliente),
+  });
+  return handleResponse(response);
+};
+
+export const deleteCliente = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/clientes/${id}`, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
+
+// ==================== CUENTAS CONTABLES ====================
+export const getCuentasContables = async () => {
+  const response = await fetch(`${API_BASE_URL}/cuentas-contables`);
+  return handleResponse(response);
+};
+
+export const createCuentaContable = async (cuenta) => {
+  const response = await fetch(`${API_BASE_URL}/cuentas-contables`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(cuenta),
+  });
+  return handleResponse(response);
+};
+
+export const updateCuentaContable = async (id, cuenta) => {
+  const response = await fetch(`${API_BASE_URL}/cuentas-contables/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(cuenta),
+  });
+  return handleResponse(response);
+};
+
+export const deleteCuentaContable = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/cuentas-contables/${id}`, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
+
+// ==================== DESCUENTOS ====================
+export const getDescuentos = async () => {
+  const response = await fetch(`${API_BASE_URL}/descuentos`);
+  return handleResponse(response);
+};
+
+export const createDescuento = async (descuento) => {
+  const response = await fetch(`${API_BASE_URL}/descuentos`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(descuento),
+  });
+  return handleResponse(response);
+};
+
+export const updateDescuento = async (id, descuento) => {
+  const response = await fetch(`${API_BASE_URL}/descuentos/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(descuento),
+  });
+  return handleResponse(response);
+};
+
+export const deleteDescuento = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/descuentos/${id}`, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
+
+// ==================== INSUMOS ====================
+export const getInsumos = async () => {
+  const response = await fetch(`${API_BASE_URL}/insumos`);
+  return handleResponse(response);
+};
+
+export const createInsumo = async (insumo) => {
+  const response = await fetch(`${API_BASE_URL}/insumos`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(insumo),
+  });
+  return handleResponse(response);
+};
+
+export const updateInsumo = async (id, insumo) => {
+  const response = await fetch(`${API_BASE_URL}/insumos/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(insumo),
+  });
+  return handleResponse(response);
+};
+
+export const deleteInsumo = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/insumos/${id}`, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
+
+// ==================== MESAS ====================
+export const getMesas = async () => {
+  const response = await fetch(`${API_BASE_URL}/mesas`);
+  return handleResponse(response);
+};
+
+export const createMesa = async (mesa) => {
+  const response = await fetch(`${API_BASE_URL}/mesas`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(mesa),
+  });
+  return handleResponse(response);
+};
+
+export const updateMesa = async (id, mesa) => {
+  const response = await fetch(`${API_BASE_URL}/mesas/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(mesa),
+  });
+  return handleResponse(response);
+};
+
+export const deleteMesa = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/mesas/${id}`, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
+
+// ==================== SUBRECETAS ====================
+export const getSubRecetas = async () => {
+  const response = await fetch(`${API_BASE_URL}/subrecetas`);
+  return handleResponse(response);
+};
+
+export const createSubReceta = async (subreceta) => {
+  const response = await fetch(`${API_BASE_URL}/subrecetas`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(subreceta),
+  });
+  return handleResponse(response);
+};
+
+export const updateSubReceta = async (id, subreceta) => {
+  const response = await fetch(`${API_BASE_URL}/subrecetas/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(subreceta),
+  });
+  return handleResponse(response);
+};
+
+export const deleteSubReceta = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/subrecetas/${id}`, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
+
+  // ==================== DETALLES SUBRECETAS ====================
+  export const getDetallesSubRecetas = async () => {
+    const response = await fetch(`${API_BASE_URL}/detallesubrecetas`);
+    return handleResponse(response);
+  };
+
+  export const getDetalleSubRecetaPorId = async (id) => {
+    const response = await fetch(`${API_BASE_URL}/detallesubrecetas/${id}`);
+    return handleResponse(response);
+  };
+
+  export const createDetalleSubReceta = async (detalle) => {
+    const response = await fetch(`${API_BASE_URL}/detallesubrecetas`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(detalle),
+    });
+    return handleResponse(response);
+  };
+
+  export const updateDetalleSubReceta = async (id, detalle) => {
+    const response = await fetch(`${API_BASE_URL}/detallesubrecetas/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(detalle),
+    });
+    return handleResponse(response);
+  };
+
+  export const deleteDetalleSubReceta = async (id) => {
+    const response = await fetch(`${API_BASE_URL}/detallesubrecetas/${id}`, {
+      method: 'DELETE',
+    });
+    return handleResponse(response);
+  };

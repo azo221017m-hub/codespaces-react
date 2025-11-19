@@ -4,6 +4,13 @@ import GestionNegocios from './GestionNegocios';
 import GestionUsuarios from './GestionUsuarios';
 import GestionRoles from './GestionRoles';
 import GestionUnidadesMedida from './GestionUnidadesMedida';
+import ConfigCategoria from './ConfigCategoria';
+import ConfigClientes from './ConfigClientes';
+import ConfigCuentaContable from './ConfigCuentaContable';
+import ConfigDescuentos from './ConfigDescuentos';
+import ConfigInsumos from './ConfigInsumos';
+import ConfigMesas from './ConfigMesas';
+import ConfigSubReceta from './ConfigSubReceta';
 
 function TableroInicial({ usuario, onLogout }) {
   const [menuAbierto, setMenuAbierto] = useState({
@@ -111,7 +118,63 @@ function TableroInicial({ usuario, onLogout }) {
                       📏 Unidad de Medida
                     </button>
                   </li>
-                </ul>
+                  <li>
+                    <button 
+                      className={seccionActiva === 'categorias' ? 'activo' : ''}
+                      onClick={() => cambiarSeccion('categorias')}
+                    >
+                      🗂️ Categorías
+                    </button>
+                  </li>
+                    <li>
+                      <button 
+                        className={seccionActiva === 'clientes' ? 'activo' : ''}
+                        onClick={() => cambiarSeccion('clientes')}
+                      >
+                        👤 Clientes
+                      </button>
+                    </li>
+                    <li>
+                      <button 
+                        className={seccionActiva === 'cuentascontables' ? 'activo' : ''}
+                        onClick={() => cambiarSeccion('cuentascontables')}
+                      >
+                        💼 Cuentas Contables
+                      </button>
+                    </li>
+                    <li>
+                      <button 
+                        className={seccionActiva === 'descuentos' ? 'activo' : ''}
+                        onClick={() => cambiarSeccion('descuentos')}
+                      >
+                        🎟️ Descuentos
+                      </button>
+                    </li>
+                    <li>
+                      <button 
+                        className={seccionActiva === 'insumos' ? 'activo' : ''}
+                        onClick={() => cambiarSeccion('insumos')}
+                      >
+                        🧃 Insumos
+                      </button>
+                    </li>
+                    <li>
+                      <button 
+                        className={seccionActiva === 'mesas' ? 'activo' : ''}
+                        onClick={() => cambiarSeccion('mesas')}
+                      >
+                        🍽️ Mesas
+                      </button>
+                    </li>
+                    <li>
+                      <button 
+                        className={seccionActiva === 'subreceta' ? 'activo' : ''}
+                        onClick={() => cambiarSeccion('subreceta')}
+                      >
+                        🥣 SubReceta
+                      </button>
+                    </li>
+                  </ul>
               )}
             </div>
           </nav>
@@ -157,7 +220,28 @@ function TableroInicial({ usuario, onLogout }) {
                 <p>Define las unidades de medida para productos</p>
               </div>
             )}
-          </div>
+            {seccionActiva === 'categorias' && (
+              <ConfigCategoria usuario={usuario} />
+            )}
+              {seccionActiva === 'clientes' && (
+                <ConfigClientes usuario={usuario} />
+              )}
+              {seccionActiva === 'cuentascontables' && (
+                <ConfigCuentaContable usuario={usuario} />
+              )}
+              {seccionActiva === 'descuentos' && (
+                <ConfigDescuentos usuario={usuario} />
+              )}
+              {seccionActiva === 'insumos' && (
+                <ConfigInsumos usuario={usuario} />
+              )}
+              {seccionActiva === 'mesas' && (
+                <ConfigMesas usuario={usuario} />
+              )}
+              {seccionActiva === 'subreceta' && (
+                <ConfigSubReceta usuario={usuario} />
+              )}
+                      </div>
           {seccionActiva === 'unidades' && <GestionUnidadesMedida usuario={usuario} />}
         </main>
 

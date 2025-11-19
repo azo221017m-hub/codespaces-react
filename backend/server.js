@@ -9,6 +9,13 @@ import negociosRoutes from './routes/negocios.routes.js';
 import usuariosRoutes from './routes/usuarios.routes.js';
 import rolesRoutes from './routes/roles.routes.js';
 import unidadesMedidaRoutes from './routes/unidadesMedida.routes.js';
+import categoriasRoutes from './routes/categorias.routes.js';
+import clientesRoutes from './routes/clientes.routes.js'; // Nueva ruta para clientes
+import cuentacontableRoutes from './routes/cuentacontable.routes.js'; // Nueva ruta para cuentas contables
+import descuentosRoutes from './routes/descuentos.routes.js'; // Nueva ruta para descuentos
+import insumosRoutes from './routes/insumos.routes.js'; // Nueva ruta para insumos
+import mesasRoutes from './routes/mesas.routes.js'; // Nueva ruta para mesas
+import detallesubrecetasRoutes from './routes/detallesubrecetas.routes.js'; // Nueva ruta para detalles subrecetas
 
 // Configuración
 dotenv.config();
@@ -16,36 +23,24 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Configuración de CORS simplificada
+const corsOptions = {
+  origin: '*', // Permitir todos los orígenes temporalmente para depuración
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
 // Middlewares
-app.use(cors({
-  origin: function(origin, callback) {
-    // Permitir requests sin origin (como mobile apps o curl)
-    if (!origin) return callback(null, true);
-    
-    // Permitir localhost y GitHub Codespaces
-    const allowedOrigins = [
-      'http://localhost:3000',
-      /https:\/\/.*\.app\.github\.dev$/
-    ];
-    
-    const isAllowed = allowedOrigins.some(pattern => 
-      pattern instanceof RegExp ? pattern.test(origin) : pattern === origin
-    );
-    
-    if (isAllowed) {
-      callback(null, true);
-    } else {
-      callback(new Error('No permitido por CORS'));
-    }
-  },
-  credentials: true
-}));
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Manejar preflight requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middleware para logging
 app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin || 'No origin'}`);
   next();
 });
 
@@ -74,6 +69,13 @@ app.use('/api/negocios', negociosRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/roles', rolesRoutes);
 app.use('/api/unidades-medida', unidadesMedidaRoutes);
+app.use('/api/categorias', categoriasRoutes);
+app.use('/api/clientes', clientesRoutes); // Registrar la ruta de clientes
+app.use('/api/cuentas-contables', cuentacontableRoutes); // Registrar la ruta de cuentas contables
+app.use('/api/descuentos', descuentosRoutes); // Registrar la ruta de descuentos
+app.use('/api/insumos', insumosRoutes); // Registrar la ruta de insumos
+app.use('/api/mesas', mesasRoutes); // Registrar la ruta de mesas
+app.use('/api/detallesubrecetas', detallesubrecetasRoutes); // Registrar la ruta de detalles subrecetas
 
 // Manejo de errores 404
 app.use((req, res) => {

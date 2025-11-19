@@ -1,0 +1,51 @@
+.lista-clientes {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 98vw;
+  overflow-x: auto;
+}
+
+.lista-clientes h2 {
+  color: #1976d2;
+  margin-bottom: 1rem;
+}
+
+.lista-clientes table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.lista-clientes th, .lista-clientes td {
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.lista-clientes th {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.lista-clientes tr:hover {
+  background: #f0f7fa;
+}
+
+.lista-clientes button {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.lista-clientes button:hover {
+  background: #1565c0;
+}
