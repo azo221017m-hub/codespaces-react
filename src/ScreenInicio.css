@@ -1,0 +1,79 @@
+.screen-inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.contenedor-logo {
+  margin-bottom: 40px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.logo-inicio {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.contenedor-texto {
+  text-align: center;
+  max-width: 600px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.texto-animado {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  animation: fadeIn 0.5s ease-in;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-inicio {
+    width: 150px;
+    height: 150px;
+  }
+
+  .texto-animado {
+    font-size: 1.4rem;
+  }
+}

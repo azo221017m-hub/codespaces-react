@@ -1,0 +1,230 @@
+.lista-negocios {
+  display: grid;
+  gap: 20px;
+}
+
+.sin-resultados {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  color: #7f8c8d;
+}
+
+.sin-resultados p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.negocio-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #667eea;
+}
+
+.negocio-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.negocio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.negocio-titulo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.negocio-titulo h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.4rem;
+}
+
+.negocio-numero {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: #e8eaf6;
+  color: #5c6bc0;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.negocio-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.negocio-status.activo {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.negocio-status.inactivo {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.negocio-acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-editar,
+.btn-eliminar {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-editar {
+  background-color: #e3f2fd;
+}
+
+.btn-editar:hover {
+  background-color: #2196f3;
+  transform: scale(1.1);
+}
+
+.btn-eliminar {
+  background-color: #ffebee;
+}
+
+.btn-eliminar:hover {
+  background-color: #f44336;
+  transform: scale(1.1);
+}
+
+.negocio-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.info-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-grupo.full-width {
+  grid-column: 1 / -1;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+.info-valor {
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.negocio-parametros {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.negocio-parametros h4 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.parametros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.parametro-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.param-label {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+.param-valor {
+  color: #2c3e50;
+  font-size: 0.9rem;
+}
+
+.parametros-opciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.opcion-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.negocio-footer {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.audit-info {
+  font-size: 0.85rem;
+  color: #95a5a6;
+  font-style: italic;
+}
+
+.audit-info strong {
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .negocio-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .negocio-acciones {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .negocio-info,
+  .parametros-grid {
+    grid-template-columns: 1fr;
+  }
+}

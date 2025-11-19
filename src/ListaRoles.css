@@ -1,0 +1,262 @@
+.lista-roles {
+  display: grid;
+  gap: 20px;
+}
+
+.sin-resultados {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  color: #7f8c8d;
+}
+
+.sin-resultados p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.rol-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #667eea;
+}
+
+.rol-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.rol-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.rol-titulo-section {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.rol-icono {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.icono-rol {
+  font-size: 2rem;
+}
+
+.rol-info-principal h3 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 1.4rem;
+}
+
+.rol-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.rol-status.activo {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.rol-status.inactivo {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.rol-acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-editar,
+.btn-eliminar {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-editar {
+  background-color: #e3f2fd;
+}
+
+.btn-editar:hover {
+  background-color: #2196f3;
+  transform: scale(1.1);
+}
+
+.btn-eliminar {
+  background-color: #ffebee;
+}
+
+.btn-eliminar:hover {
+  background-color: #f44336;
+  transform: scale(1.1);
+}
+
+.rol-descripcion {
+  margin-bottom: 15px;
+}
+
+.rol-descripcion p {
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.rol-info-extra {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.info-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  background-color: #e8eaf6;
+  color: #5c6bc0;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.badge-icon {
+  font-size: 1rem;
+}
+
+/* Privilegios */
+.privilegios-resumen {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.resumen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.resumen-header h4 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.privilegios-count {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.barra-privilegios {
+  width: 100%;
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.barra-relleno-privilegios {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 6px;
+}
+
+.privilegios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.privilegio-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.privilegio-item.activo {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.privilegio-item.inactivo {
+  background-color: #f8d7da;
+  color: #721c24;
+  opacity: 0.7;
+}
+
+.priv-icon {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.rol-footer {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.audit-info {
+  font-size: 0.85rem;
+  color: #95a5a6;
+  font-style: italic;
+}
+
+.audit-info strong {
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .rol-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .rol-titulo-section {
+    width: 100%;
+  }
+
+  .rol-acciones {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .privilegios-grid {
+    grid-template-columns: 1fr;
+  }
+}

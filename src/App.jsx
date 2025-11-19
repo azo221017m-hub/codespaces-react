@@ -1,29 +1,39 @@
+import { useState, useEffect } from 'react';
 import './App.css';
+import ScreenInicio from './ScreenInicio';
+import Login from './Login';
+import TableroInicial from './TableroInicial';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
-  );
+  const [mostrarInicio, setMostrarInicio] = useState(true);
+  const [usuario, setUsuario] = useState(null);
+
+  useEffect(() => {
+    // Mostrar pantalla de inicio por 5 segundos
+    const timer = setTimeout(() => {
+      setMostrarInicio(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleLoginSuccess = (userData) => {
+    setUsuario(userData);
+  };
+
+  const handleLogout = () => {
+    setUsuario(null);
+  };
+
+  if (mostrarInicio) {
+    return <ScreenInicio />;
+  }
+
+  if (!usuario) {
+    return <Login onLoginSuccess={handleLoginSuccess} />;
+  }
+
+  return <TableroInicial usuario={usuario} onLogout={handleLogout} />;
 }
 
 export default App;
