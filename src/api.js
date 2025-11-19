@@ -161,3 +161,48 @@ export const eliminarRol = async (id) => {
   
   return handleResponse(response);
 };
+
+// ==================== UNIDADES DE MEDIDA ====================
+
+export const obtenerUnidadesMedida = async () => {
+  const response = await fetch(`${API_BASE_URL}/unidades-medida`);
+  return handleResponse(response);
+};
+
+export const obtenerUnidadMedidaPorId = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/unidades-medida/${id}`);
+  return handleResponse(response);
+};
+
+export const crearUnidadMedida = async (unidad) => {
+  const response = await fetch(`${API_BASE_URL}/unidades-medida`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(unidad),
+  });
+  
+  return handleResponse(response);
+};
+
+export const actualizarUnidadMedida = async (id, unidad) => {
+  const response = await fetch(`${API_BASE_URL}/unidades-medida/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(unidad),
+  });
+  
+  return handleResponse(response);
+};
+
+export const eliminarUnidadMedida = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/unidades-medida/${id}`, {
+    method: 'DELETE',
+  });
+  
+  return handleResponse(response);
+};
+};

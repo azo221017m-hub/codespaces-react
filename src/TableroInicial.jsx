@@ -3,6 +3,7 @@ import './TableroInicial.css';
 import GestionNegocios from './GestionNegocios';
 import GestionUsuarios from './GestionUsuarios';
 import GestionRoles from './GestionRoles';
+import GestionUnidadesMedida from './GestionUnidadesMedida';
 
 function TableroInicial({ usuario, onLogout }) {
   const [menuAbierto, setMenuAbierto] = useState({
@@ -157,10 +158,11 @@ function TableroInicial({ usuario, onLogout }) {
               </div>
             )}
           </div>
+          {seccionActiva === 'unidades' && <GestionUnidadesMedida usuario={usuario} />}
         </main>
 
-        {/* Panel Lateral Derecho - Pedidos Online */}
-        <aside className="panel-pedidos">
+        {/* Panel lateral derecho - Pedidos Online */}
+        <aside className="panel-derecho">
           <div className="pedidos-header">
             <h3>🛒 Pedidos Online</h3>
             <span className="pedidos-badge">{pedidosOnline.length}</span>

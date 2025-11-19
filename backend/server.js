@@ -8,6 +8,7 @@ import { testConnection } from './config/database.js';
 import negociosRoutes from './routes/negocios.routes.js';
 import usuariosRoutes from './routes/usuarios.routes.js';
 import rolesRoutes from './routes/roles.routes.js';
+import unidadesMedidaRoutes from './routes/unidadesMedida.routes.js';
 
 // Configuración
 dotenv.config();
@@ -72,6 +73,7 @@ app.get('/health', async (req, res) => {
 app.use('/api/negocios', negociosRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/roles', rolesRoutes);
+app.use('/api/unidades-medida', unidadesMedidaRoutes);
 
 // Manejo de errores 404
 app.use((req, res) => {
